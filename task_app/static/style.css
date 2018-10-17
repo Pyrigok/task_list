@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* fonts */
+@import url("https://fonts.googleapis.com/css?family=Pacifico&subset=cyrillic");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300|Tangerine");
+/* colors */
+/* *** */
+/* base_page */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 10px;
+  box-shadow: 0px 1px 10px 3px #264d00; }
+
+footer {
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px -1px 10px 3px #264d00;
+  background-color: #ecf9f2;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-family: "Open Sans", sans-serif;
+  color: black; }

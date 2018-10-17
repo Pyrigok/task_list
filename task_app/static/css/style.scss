@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Pacifico&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Tangerine');
+
+$pacifico: 'Pacifico', cursive;
+$open_sans: 'Open Sans', sans-serif;
+
+/* colors */
+
+/* *** */
+
+header {
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 10px;
+  box-shadow: 0px 1px 10px 3px #264d00; }
+
+ /* base content */
+
+#add_task_div{
+	/*display: none;*/
+}
+
+.hide_task_div{
+	display: none;
+}
+
+#task_detail_div{
+	/*display: none;*/
+}
+
+input{
+	border: none;
+	outline: none;
+	text-decoration: none;
+	background-color: transparent;
+	font-family: $open_sans;
+	color: black;
+	font-size: 18px;
+	border: none;
+	border-bottom: 1px solid green;
+	&:focus {
+	border: none;
+	border-bottom: 1px solid green;	
+	outline: none;
+	}
+}
+
+tr:hover {
+	cursor: pointer;
+}
+
+ /* end base content */
+
+footer {
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px -1px 10px 3px #264d00;
+  background-color: #ecf9f2;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-family: "Open Sans", sans-serif;
+  color: black; }
