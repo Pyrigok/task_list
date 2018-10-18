@@ -2,18 +2,22 @@
 
 {% block content %}
 
-	<div class="col-md-4 col-md-offset-8">
+	<div class="col-xs-12 col-md-12 text-center">
 		<h1>Logout Section</h1>
 
 		<p>'Are you sure you want to logout?'</p>
 
 		<form method="post" action="{% url 'account_logout' %}">
 		  {% csrf_token %}
+
 		  {% if redirect_field_value %}
-		  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+
+		 	 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+
 		  {% endif %}
-		  <button type="submit">Logout</button>
-		<hr>
+
+		  <button type="submit">Logout</button> | <a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">Back to tasks</a>
+		
 		</form>
 
 

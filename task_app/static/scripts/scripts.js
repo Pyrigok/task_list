@@ -28,5 +28,7 @@
 	});
 */
 
+	$('#login_input').addClass('login_input');
+
 
 });

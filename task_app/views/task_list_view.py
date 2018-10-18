@@ -4,11 +4,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from django.contrib.auth.decorators import login_required
+
 import datetime
 
 from ..models import Task_Details_Model, Chooses_Date_Model
 from ..util import get_current_task, get_specific_date
 
+@login_required
 def choose_date_add_tasks_show_tasks(request):
 	if request.method == 'POST':
 
@@ -39,7 +42,7 @@ def choose_date_add_tasks_show_tasks(request):
 			else:
 				current_details = None
 
-			return render(request, 'base.html', {'ch_task': today_task_list, 'current_details': current_details})
+			return render(request, 'task_list.html', {'ch_task': today_task_list, 'current_details': current_details})
 		
 
 			# add new task
@@ -88,7 +91,7 @@ def choose_date_add_tasks_show_tasks(request):
 				return HttpResponseRedirect('%s?status_message=Task added!' %(reverse('choose_date_add_tasks_show_tasks_view_url')))
 
 			else:
-				return render(request, 'base.html', {'errors': errors})	
+				return render(request, 'task_list.html', {'errors': errors})	
 
 
 		elif request.POST.get('cancel_button') is not None:
@@ -97,11 +100,11 @@ def choose_date_add_tasks_show_tasks(request):
 
 
 		else:
-			return render(request, 'base.html', {})
+			return render(request, 'task_list.html', {})
 
 			#return HttpResponseRedirect(u'%s?status_message=You should choose some date!' %(reverse('choose_date_url')))
 	else:
-		return render(request, 'base.html', {})
+		return render(request, 'task_list.html', {})
 
 '''
 def task_list(request):

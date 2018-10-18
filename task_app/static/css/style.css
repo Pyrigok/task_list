@@ -52,6 +52,20 @@ input {
     border: none;
     border-bottom: 1px solid green;
     outline: none; }
+.login_input {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid green; }
+  input:focus {
+    border: none;
+    border-bottom: 1px solid green;
+    outline: none; }
 
 tr:hover {
   cursor: pointer; }
