@@ -19,10 +19,14 @@
 							name="calendar_form">
 								{% csrf_token %}
 
-							<div class="date_div col-xs-12 col-md-6 col-md-offset-2" id="date_div" style="position: relative">
-
-								<input class='date_input dateinput' id="calendar" type="text" name="chooses_date" 
-								placeholder="Choose date...">
+							<div class="date_div col-xs-12 col-md-6 col-md-offset-2 
+										{% if chooses_date.errore %}has-error{% endif %}" id="date_div" style="position: relative">
+		
+								<span class="help-block">
+									<input class='date_input dateinput' id="calendar" type="text" name="chooses_date" 
+									placeholder="Choose date...">
+									{{ errors.chooses_date }}
+								</span>
 
 								<button id="show_task_button" type="submit" name="choose_date_button" class='btn btn-default'>Show tasks</button>
 							</div>
@@ -49,6 +53,7 @@
 										
 										<!-- <th>Priority</th> -->
 										<th class="text-center">Status</th>
+										<th class="text-center">Author</th>
 									</tr>
 
 									{% for entry in ch_task %}
@@ -67,7 +72,8 @@
 														<option value="in the process">In the process</option>
 														<option value="done">Done</option>
 													</select> -->
-												</td>									
+												</td>		
+												<td class="text-center">{{ entry.author }}</td>							
 											
 										</tr>
 									

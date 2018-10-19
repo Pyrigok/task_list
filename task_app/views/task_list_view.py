@@ -11,6 +11,10 @@ import datetime
 from ..models import Task_Details_Model, Chooses_Date_Model
 from ..util import get_current_task, get_specific_date
 
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
 @login_required
 def choose_date_add_tasks_show_tasks(request):
 	if request.method == 'POST':
@@ -19,16 +23,27 @@ def choose_date_add_tasks_show_tasks(request):
 			# choose date to see tasks on this date
 
 			data = {}
+			errors = {}
 
 			
 			# -------------
-			data['chooses_date'] = request.POST.get('chooses_date', '').strip()
+			chooses_date = request.POST.get('chooses_date', '').strip()
+			if not chooses_date:
+				errors['chooses_date'] = u'Choose date first!'
+			else:
+				data['chooses_date'] = chooses_date
+			if not errors:
+			
+				new_date = Chooses_Date_Model(**data)
+				new_date.save()
+			else:
+				return render(request, 'task_list.html', {'errors': errors})
+
 
 			
-			new_date = Chooses_Date_Model(**data)
-			new_date.save()
 			
-			ch_task = Task_Details_Model.objects.filter(date_of_task_execution=str(new_date))
+			# show tasks filtered by chooses date and logged user's
+			ch_task = Task_Details_Model.objects.filter(date_of_task_execution=str(new_date), author=str(request.user))
 
 			today_task_list = []
 
@@ -39,6 +54,7 @@ def choose_date_add_tasks_show_tasks(request):
 			current_task = get_current_task(request)
 			if current_task is not None:
 				current_details = Task_Details_Model.objects.filter(title=current_task.title)
+	
 			else:
 				current_details = None
 
@@ -53,6 +69,7 @@ def choose_date_add_tasks_show_tasks(request):
 			data = {}
 			errors = {}
 
+			data['author'] = request.user
 			data['status'] = 'In the process'
 
 			title = request.POST.get('title', '').strip()

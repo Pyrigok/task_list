@@ -5,6 +5,12 @@ class Task_Details_Model(models.Model):
 		verbose_name = u'Task description'
 		verbose_name_plural = u'Task description'
 
+	author= models.CharField(
+		max_length = 50,
+		blank = False,
+		null = False,
+		verbose_name = u'Author of task')
+
 	title = models.CharField(
 		max_length = 20,
 		blank = False,

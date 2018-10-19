@@ -11,7 +11,7 @@ class Chooses_Date_Model(models.Model):
 		verbose_name = u'Name')
 
 	chooses_date = models.DateField(
-		blank = True,
+		blank = False,
 		verbose_name = u'Chooses date')
 
 	def __str__(self):

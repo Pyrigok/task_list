@@ -5,14 +5,14 @@
 		$('#show_task_button').slideDown();
 	});
 
-	$('#show_task_button').click(function() {
+	/*$('#show_task_button').click(function() {
 		
 		let date = $('.date_input').val();
 
 		if (date === '' ) {
 			alert('Choose some date!');
 		}; 
-	});
+	});*/
 
 
 	/*hide add_task form*/
