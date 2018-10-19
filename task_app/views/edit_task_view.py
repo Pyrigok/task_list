@@ -5,10 +5,9 @@ from django.urls import reverse
 
 from django.forms import ModelForm
 from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-from crispy_forms.bootstrap import FormActions
+
 
 from ..models import Task_Details_Model
 
@@ -18,7 +17,7 @@ class TaskUpdateView(UpdateView):
 	template_name_suffix = '_update_form'
 
 	def get_success_url(self):
-		return reverse('choose_date_add_tasks_show_tasks_view_url')
+		return u'%s?status_message=Task edited!' %reverse('choose_date_add_tasks_show_tasks_view_url')
 
 	def post(self, request, *args, **kwargs):
 		if request.POST.get('cancel_button'):

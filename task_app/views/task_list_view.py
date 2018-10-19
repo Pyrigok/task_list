@@ -13,14 +13,6 @@ from ..util import get_current_task, get_specific_date
 
 from django.views.decorators.csrf import csrf_exempt
 
-from django.forms import ModelForm
-from django.views.generic.edit import UpdateView, DeleteView
-
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-from crispy_forms.bootstrap import FormActions
-
-
 @csrf_exempt
 @login_required
 def choose_date_add_tasks_show_tasks(request):
@@ -131,62 +123,6 @@ def choose_date_add_tasks_show_tasks(request):
 		return render(request, 'task_list.html', {})
 
 
-
-
-	# task edit
-'''
-@login_required
-class TaskUpdateView(UpdateView):
-	model = Task_Details_Model
-	form_class = choose_date_add_tasks_show_tasks
-	#fields = ['content']
-	template_name = 'templates/edit_task.html'
-'''
-@login_required
-class TaskUpdateForm(ModelForm):
-	class Meta:
-		model = Task_Details_Model
-		fields = ('title', 'content')
-
-	def __init__(self, *args, **kwargs):
-		super(TaskUpdateForm, self).__init__(*args, **kwargs)
-
-		self.helper = FormHelper(self)
-
-		self.helper.form_action = reverse('edit_task_url', kwargs={'pk': kwargs['instance'].id})
-		self.helper.form_method = 'POST'
-		self.helper.form_class = 'form-horizontal'
-
-		self.helper.help_text_inline = True
-		self.helper.html5_required = True
-		self.helper.label_class = 'col-sm-2 control-label'
-		self.helper.field_class = 'col-sm-10'
-
-		self.helper.layout[-1] = FormActions(
-            Submit('save_button', u'Save', css_class="btn btn-primary"),
-            Submit('cancel_button', u'Cancel', css_class="btn btn-link"),
-        )
-
-@login_required
-class TaskUpdateView(UpdateView):
-	model = Task_Details_Model
-	template_name = 'edit_task.html'
-	form_class = TaskUpdateForm
-#	template_name_suffix = '_update_form'
-
-
-
-	def get_success_url(self):
-		return reverse('choose_date_add_tasks_show_tasks_view_url')
-
-	def post(self, request, *args, **kwargs):
-		if request.POST.get('cancel_button'):
-			return HttpResponseRedirect(u'%s?status_message=Editing canceled!' %(reverse('choose_date_add_tasks_show_tasks_view_url')))
-		else:
-			return super(TaskUpdateView, self).post(request, *args, **kwargs)
-
-	def dispatch(self, *args, **kwargs):
-		return super(TaskUpdateView, self).dispatch(*args, **kwargs)
 '''
 def task_list(request):
 
