@@ -104,7 +104,9 @@
 								<hr>
 
 								{% for entry in current_details %}
-									<h4>{{ entry.title }}</h4>
+									<h4>
+										<a href="{% url 'edit_task_url' pk=entry.id %}">{{ entry.title }}</a>
+									</h4>
 									<hr>
 									<article>{{ entry.content }}</article>
 									<hr>
@@ -112,6 +114,9 @@
 									<p>created on - {{ entry.task_created_on }} |
 									 when to execute - {{ entry.date_of_task_execution }}</p>
 									<!-- <p>deadline - {{ entry.deadline }}</p> -->
+									<a href="{% url 'delete_task_url' pk=entry.id %}">
+										<button class="btn btn-default">Delete Task</button></a>
+									
 									<hr>
 					
 
