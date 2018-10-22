@@ -8,8 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 import datetime
 
+from django.contrib.auth.models import User
+
+
 from ..models import Task_Details_Model, Chooses_Date_Model
-from ..util import get_current_task, get_specific_date
+from ..util import get_current_task#, get_specific_date
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -53,11 +56,14 @@ def choose_date_add_tasks_show_tasks(request):
 			current_task = get_current_task(request)
 			if current_task is not None:
 				current_details = Task_Details_Model.objects.filter(title=current_task.title)
+				users_list = User.objects.all()
+
 	
 			else:
 				current_details = None
+				users_list = None
 
-			return render(request, 'task_list.html', {'ch_task': today_task_list, 'current_details': current_details})
+			return render(request, 'task_list.html', {'users_list': users_list, 'ch_task': today_task_list, 'current_details': current_details})
 		
 
 			# add new task

@@ -17,6 +17,35 @@ function initTaskSelector() {
 	});
 }
 
+function initUserSelector() {
+	$('#share_task_button').click(function(event) {
+		selected_user = $('#user_selector select').val();
+
+
+		if (selected_user) {
+			$.cookie('current_user', selected_user, {'path': '/', 'expires': 365});
+		} else {
+			$.removeCookie('current_user', {'path': '/'});
+		}
+		location.reload(true);
+		return true;
+	});
+}
+/*
+function initUserSelector() {
+	$('#user_selector select').change(function(event) {
+		var selected_user = $(this).val();
+
+		if (selected_user) {
+			$.cookie('current_user', selected_user, {'path': '/', 'expires': 365});
+		} else {
+			$.removeCookie('current_user', {'path': '/'});
+		}
+		location.reload(true);
+		return true;
+	});
+}*/
+
 /*function initDateSelector() {
 	$('#date_row  #date_div').click(function(event) {
 
@@ -34,5 +63,6 @@ function initTaskSelector() {
 
 $(document).ready(function() {
 	initTaskSelector();
+	initUserSelector();
 	/*initDateSelector();*/
 });

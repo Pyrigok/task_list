@@ -29,7 +29,6 @@ class TaskUpdateView(UpdateView):
 		return super(TaskUpdateView, self).dispatch(*args, **kwargs)
 
 
-
 class TaskDeleteView(DeleteView):
 	model = Task_Details_Model
 	template_name_suffix = '_delete_form'

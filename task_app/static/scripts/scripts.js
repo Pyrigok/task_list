@@ -30,5 +30,9 @@
 
 	$('#login_input').addClass('login_input');
 
+	$('#selector').change(function() {
+		$('#share_task_button').slideDown();
+	});
+
 
 });

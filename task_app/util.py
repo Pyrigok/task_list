@@ -1,4 +1,6 @@
-import datetime
+#import datetime
+
+# func for receive task id from cookie
 def get_current_task(request):
 
 	pk = request.COOKIES.get('current_task')
@@ -6,7 +8,7 @@ def get_current_task(request):
 	if pk:
 		from .models import Task_Details_Model
 		try:
-			# find entry from db with current choose id
+			# find entry from db with current chooses id
 			task = Task_Details_Model.objects.get(pk=int(pk))
 
 		except Task_Details_Model.DoesNotExist:
@@ -15,6 +17,32 @@ def get_current_task(request):
 			return task
 	else:
 		return None
+
+# func for receive user id from cookie
+def get_current_user(request):
+
+	pk = request.COOKIES.get('current_user')
+
+
+	if pk:
+		from django.contrib.auth.models import User
+
+		try:
+			# find user from db with current chooses id
+			user = User.objects.get(pk=int(pk))
+
+
+		except User.DoesNotExist:
+			return None
+		else:
+			return user
+	else:
+		return None
+
+
+
+
+
 '''
 # func for context processor's
 def get_tasks(request):
@@ -34,14 +62,14 @@ def get_tasks(request):
 			})
 		return tasks'''
 
-
+'''
 def get_specific_date(request):
 
 	pk = request.COOKIES.get('specific_date')
 
 	if pk:
 		return pk
-		'''pk=int(pk.split('-')[1])#, int(pk.split('-')[1]), int(pk.split('-')[2]))
+		pk=int(pk.split('-')[1])#, int(pk.split('-')[1]), int(pk.split('-')[2]))
 		print('new_pk -',pk)
 		from .models import Task_Details_Model
 		try:
@@ -49,6 +77,7 @@ def get_specific_date(request):
 		except Task_Details_Model.DoesNotExist:
 			return None
 		else:
-			return specific_task'''
+			return specific_task
 	else:
 		return None
+'''

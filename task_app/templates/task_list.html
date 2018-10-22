@@ -105,7 +105,7 @@
 
 								{% for entry in current_details %}
 									<h4>
-										<a href="{% url 'edit_task_url' pk=entry.id %}">{{ entry.title }}</a>
+										{{ entry.title }}
 									</h4>
 									<hr>
 									<article>{{ entry.content }}</article>
@@ -114,8 +114,33 @@
 									<p>created on - {{ entry.task_created_on }} |
 									 when to execute - {{ entry.date_of_task_execution }}</p>
 									<!-- <p>deadline - {{ entry.deadline }}</p> -->
+
+									<hr>
+
+									<a href="{% url 'edit_task_url' pk=entry.id %}">
+										<button class="btn btn-default">Edit Task</button>
+									</a>
+
 									<a href="{% url 'delete_task_url' pk=entry.id %}">
-										<button class="btn btn-default">Delete Task</button></a>
+										<button class="btn btn-default">Delete Task</button>
+									</a>
+
+									
+									<hr>
+									<div id="user_selector">
+									<p>Select the user to pass this task</p>
+										<select name="" id="selector">
+											<option value="">Users</option>
+											{% for user in users_list %}
+												<option value="{{ user.id }}">{{ user }}</option>
+											{% endfor %}
+										</select>
+										<a href="{% url 'send_mail_url' pk=entry.id %}">
+											<button id='share_task_button' class="btn btn-default">Share Task</button>
+										</a>
+									</div>
+
+
 									
 									<hr>
 					

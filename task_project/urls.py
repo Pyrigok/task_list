@@ -21,8 +21,9 @@ from django.conf.urls import url
 from django.views.generic.base import RedirectView
 
 #from task_app.views.task_list_view import task_list
-from task_app.views.task_list_view import choose_date_add_tasks_show_tasks#, TaskUpdateView
+from task_app.views.task_list_view import choose_date_add_tasks_show_tasks
 from task_app.views.edit_task_view import TaskUpdateView, TaskDeleteView
+from task_app.views.mail_view import send_email
 
 #from task_app.views.edit_task_view import TaskUpdateView, TaskDeleteView
 
@@ -35,6 +36,9 @@ urlpatterns = [
     # for task's editing
     path('task-edit/<int:pk>', TaskUpdateView.as_view(template_name='edit_task.html'), name='edit_task_url'),
     path('task-delete/<int:pk>', TaskDeleteView.as_view(template_name='delete_task.html'), name='delete_task_url'),
+
+    # send email
+    path('send-mail/<int:pk>', send_email, name='send_mail_url'),
 
     # for django-allauth
     path('accounts/', include('allauth.urls')),

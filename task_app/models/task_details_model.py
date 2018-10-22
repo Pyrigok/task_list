@@ -9,7 +9,6 @@ class Task_Details_Model(models.Model):
 	author= models.CharField(
 		max_length = 50,
 		blank = False,
-		null = False,
 		verbose_name = u'Author of task')
 
 	title = models.CharField(
