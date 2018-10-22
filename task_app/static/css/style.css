@@ -97,6 +97,15 @@ footer {
 
 /* end of base page */
 
+/* task list table */
+
+#from_user_span{
+  background-color: grey;
+  color: white;
+}
+
+/* end task list table */
+
 /* send mail page */
 #task_title_span{
   background-color: grey;

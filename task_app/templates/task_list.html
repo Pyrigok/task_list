@@ -53,7 +53,8 @@
 										
 										<!-- <th>Priority</th> -->
 										<th class="text-center">Status</th>
-										<th class="text-center">Author</th>
+										<th class="text-center">Who execute</th>
+										<th class="text-center">Task sent</th>
 									</tr>
 
 									{% for entry in ch_task %}
@@ -73,7 +74,8 @@
 														<option value="done">Done</option>
 													</select> -->
 												</td>		
-												<td class="text-center">{{ entry.author }}</td>							
+												<td class="text-center">{{ entry.who_execute }}</td>							
+												<td class="text-center"><span id="from_user_span">{{ entry.from_user }}</span></td>							
 											
 										</tr>
 									

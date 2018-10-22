@@ -23,9 +23,9 @@ function initUserSelector() {
 
 
 		if (selected_user) {
-			$.cookie('current_user', selected_user, {'path': '/', 'expires': 365});
+			$.cookie('recipient', selected_user, {'path': '/', 'expires': 365});
 		} else {
-			$.removeCookie('current_user', {'path': '/'});
+			$.removeCookie('recipient', {'path': '/'});
 		}
 		location.reload(true);
 		return true;

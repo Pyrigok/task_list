@@ -45,7 +45,7 @@ def choose_date_add_tasks_show_tasks(request):
 			
 			
 			# show tasks filtered by chooses date and logged user's
-			ch_task = Task_Details_Model.objects.filter(date_of_task_execution=str(new_date), author=str(request.user))
+			ch_task = Task_Details_Model.objects.filter(date_of_task_execution=str(new_date), who_execute=str(request.user))
 
 			today_task_list = []
 
@@ -74,7 +74,7 @@ def choose_date_add_tasks_show_tasks(request):
 			data = {}
 			errors = {}
 
-			data['author'] = request.user
+			data['who_execute'] = request.user
 			data['status'] = 'In the process'
 
 			title = request.POST.get('title', '').strip()

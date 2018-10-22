@@ -21,7 +21,7 @@ def get_current_task(request):
 # func for receive user id from cookie
 def get_current_user(request):
 
-	pk = request.COOKIES.get('current_user')
+	pk = request.COOKIES.get('recipient')
 
 
 	if pk:

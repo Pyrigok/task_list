@@ -6,10 +6,6 @@ class Chooses_Date_Model(models.Model):
 		verbose_name = u'Chooses date'
 		verbose_name_plural = u'Chooses date'
 
-	name = models.CharField(
-		blank = True,
-		max_length = 50,
-		verbose_name = u'Name')
 
 	chooses_date = models.DateField(
 		blank = False,
