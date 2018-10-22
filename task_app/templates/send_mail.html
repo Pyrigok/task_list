@@ -13,6 +13,7 @@
 		<div class="col-xs-6 col-xs-offset-3 text-center">
 
 					{% if status_message %}
+
 						<div class="alert alert-warning">
 							<p class="text-center">{{status_message }}</p>
 						</div>
@@ -24,27 +25,30 @@
 					<hr>
 
 					{% else %}
-					<form  method="post">
 
-				{% csrf_token %}
+						<form  method="post">
 
-				{% for entry in users_list %}
-					<h3>Are you sure you want pass task <span id='task_title_span'>{{ subject }}</span> to user <span id='recipient_name_span'>{{ entry }}</span>???</h3>
-					
-<!-- 				{{ form.as_p }} -->
-				{% endfor %}
-				
+							{% csrf_token %}
 
-				<button class="btn btn-success" type='submit' value="Send" name="send_button" />Yes</button>
-				
+							{% for entry in selected_user %}
 
-			</form> 
-			<br>
-			<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">
-					<button class="btn btn-default" name='cancel_sending_button'>No</button>
-				</a>
-				
-				<hr>
+								<h3>Are you sure you want pass task <br><span id='task_title_span'>{{ subject }}</span> <br>to user <br><span id='recipient_name_span'>{{ entry }}</span>???</h3>
+								
+		
+							{% endfor %}
+							
+
+							<button class="btn btn-success" type='submit' value="Send" name="send_button" />Yes</button>
+							
+
+						</form> 
+						<br>
+
+						<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">
+								<button class="btn btn-default" name='cancel_sending_button'>No</button>
+							</a>
+							
+							<hr>
 					{% endif %}
 		</div>
 	</div>

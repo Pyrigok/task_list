@@ -50,89 +50,77 @@ class SendMail(forms.Form):
 
 def send_email(request, pk):
 
-	
+	# get recipient from cookie
+	cur_recipient = get_current_user(request)
+	selected_user=User.objects.filter(username=cur_recipient)
 
-	
-		
-		
+	# get current task from cookie
+	current_task = get_current_task(request)	
+	task_details = Task_Details_Model.objects.filter(title=current_task.title)
 
-	
+	# get from_email
+	from_email = request.user.email
+	from_name = str(request.user)
 
-# ---
+
+
+	# get email from user selected from cookie
+	for user in selected_user:
+		recipient_email = user.email
+
+	recipient_list = []
+
+	# add email of current user
+	recipient_list.append(recipient_email)
+
+
+
+	# get letter subject(task title) and message(task content) 
+	
+	for entry in task_details:
+		subject = entry.title
+		message = 'Hello.\nDo it please next task!\n\n' + entry.content + '.' + '\nThank you!!!\n\n' + from_name + '\n' + from_email
+
 	if request.method=='POST':
-		#form = SendMail(request.POST)
-		# get from_email
-		from_email = request.user.email
-		from_name = str(request.user)
 
-		# get recipient
-		# get current user from cookie
-		cur_recipient = get_current_user(request)
-		if cur_recipient is not None:
+		
 
-			# get email from user selected from cookie
-			selected_user=User.objects.filter(username=cur_recipient)
-			for user in selected_user:
-				recipient_email = user.email
+		try:
+			send_mail(subject, message, from_email, recipient_list)
 
-			recipient_list = []
-
-			# add email of current user
-			recipient_list.append(recipient_email)
+		except Exception:
+			status_message = u'Some error occured! Try again later!'
 
 		else:
+			status_message = u'Message sent succesfully!'
 
-			selected_user = None
-			recipient_email = None
+		# add task to recipient's task_list
+		data = {}
 
-		# get letter subject(task title) and message(task content) 
-		current_task = get_current_task(request)
-		if current_task is not None:
-			task_details = Task_Details_Model.objects.filter(title=current_task.title)
-			for entry in task_details:
-				subject = entry.title
-				message = 'Hello.\nDo it please next task!\n\n' + entry.content + '.' + '\nThank you!!!\n\n' + from_name + '\n' + from_email
+		data['from_user'] = str(request.user)
 
+		data['who_execute'] = cur_recipient
 
-			try:
-				send_mail(subject, message, from_email, recipient_list)
+		data['title'] = entry.title
 
-			except Exception:
-				status_message = u'Some error occured! Try again later!'
+		data['status'] = entry.status
 
-			else:
-				status_message = u'Message sent succesfully!'
+		data['date_of_task_execution'] = entry.date_of_task_execution
 
-			# add task to recipient's task_list
-			data = {}
+		data['content'] = entry.content
 
-			data['from_user'] = str(request.user)
+		new_task = Task_Details_Model(**data)
+		new_task.save()
 
-			data['who_execute'] = cur_recipient
-
-			data['title'] = entry.title
-
-			data['status'] = entry.status
-
-			data['date_of_task_execution'] = entry.date_of_task_execution
-
-			data['content'] = entry.content
-
-			new_task = Task_Details_Model(**data)
-			new_task.save()
-
-			# substract shared task from request.user task_list
-			Task_Details_Model.objects.filter(who_execute=str(request.user)).delete()
+		# substract shared task from request.user task_list
+		Task_Details_Model.objects.filter(who_execute=str(request.user)).delete()
 
 
-		else:
-			current_details = None
-			subject = None
-			message = None
+		
 
-		return render(request, 'send_mail.html', {'users_list': selected_user, 'subject': subject, 'message': message, 'from_email': from_email, 'recipient_list': recipient_list, 'status_message': status_message})
+		return render(request, 'send_mail.html', {'selected_user': selected_user, 'subject': subject, 'message': message, 'from_email': from_email, 'recipient_list': recipient_list, 'status_message': status_message})
 	else:
-		return render(request, 'send_mail.html', {})
+		return render(request, 'send_mail.html', {'selected_user': selected_user,  'subject': subject})
 		#return render(request, 'send_mail.html', {'users_list': selected_user, 'subject': subject, 'message': message, 'from_email': from_email, 'recipient_list': recipient_list})
 
 	return HttpResponseRedirect(u'%s?status_message=Task sent!' % reverse('send_mail_url'))
