@@ -99,6 +99,9 @@ footer {
   background-color: grey;
   color: white;
 }
+#date_span:hover{
+  cursor: pointer;
+}
 
 /* end of base page */
 

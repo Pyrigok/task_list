@@ -52,4 +52,4 @@ class Task_Details_Model(models.Model):
 		verbose_name = u'Date of add task')
 
 	def __str__(self):
-		return '%s %s %s %s %s %s' %(self.who_execute, self.from_user, self.title, self.date_of_task_execution, self.status, self.content, self.task_created_on)
+		return '%s %s %s %s %s %s %s' %(self.who_execute, self.from_user, self.title, self.date_of_task_execution, self.status, self.content, self.task_created_on)

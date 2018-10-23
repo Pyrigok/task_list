@@ -31,38 +31,27 @@ function initUserSelector() {
 		return true;
 	});
 }
-/*
-function initUserSelector() {
-	$('#user_selector select').change(function(event) {
-		var selected_user = $(this).val();
 
-		if (selected_user) {
-			$.cookie('current_user', selected_user, {'path': '/', 'expires': 365});
+function initDateSelector() {
+	$('.date_span').click(function(event) {
+
+		/*find current choose task*/
+		var date_value = $(this).find('input').val();
+
+		if (date_value) {
+
+			/*create cookie named 'current_task' and pass task.id named 'task_detail'*/
+			$.cookie('selected_date', date_value, {'path': '/', 'expires': 365});
 		} else {
-			$.removeCookie('current_user', {'path': '/'});
+			$.removeCookie('selected_date', {'path': '/'});
 		}
 		location.reload(true);
 		return true;
 	});
-}*/
-
-/*function initDateSelector() {
-	$('#date_row  #date_div').click(function(event) {
-
-		var spec_date = $(this).find('input').val();
-
-		if (spec_date) {
-			$.cookie('specific_date', spec_date, {'path': '/', 'expires': 365});
-		} else {
-			$.removeCookie('specific_date', {'path': '/'})
-		}
-		location.reload(true);
-		return true;
-	});
-}*/
+}
 
 $(document).ready(function() {
 	initTaskSelector();
 	initUserSelector();
-	/*initDateSelector();*/
+	initDateSelector();
 });
