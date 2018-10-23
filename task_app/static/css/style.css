@@ -95,6 +95,11 @@ footer {
 
 /*# sourceMappingURL=style.css.map */
 
+#date_span{
+  background-color: grey;
+  color: white;
+}
+
 /* end of base page */
 
 /* task list table */

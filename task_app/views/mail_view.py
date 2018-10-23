@@ -79,7 +79,7 @@ def send_email(request, pk):
 	
 	for entry in task_details:
 		subject = entry.title
-		message = 'Hello.\nDo it please next task!\n\n' + entry.content + '.' + '\nThank you!!!\n\n' + from_name + '\n' + from_email
+		message = 'Hello.\nComplete please '+ str(entry.date_of_task_execution) +' next task:\n\n' + entry.content + '.' + '\nThank you!!!\n\n' + from_name + '\n' + from_email
 
 	if request.method=='POST':
 
@@ -113,7 +113,7 @@ def send_email(request, pk):
 		new_task.save()
 
 		# substract shared task from request.user task_list
-		Task_Details_Model.objects.filter(who_execute=str(request.user)).delete()
+		Task_Details_Model.objects.filter(who_execute=str(request.user), title=entry.title).delete()
 
 
 		

@@ -9,7 +9,7 @@ class Task_Details_Model(models.Model):
 	who_execute = models.CharField(
 		max_length = 50,
 		blank = False,
-		verbose_name = u'Author of task')
+		verbose_name = u'Who execute the task')
 
 	from_user = models.CharField(
 		max_length = 50,

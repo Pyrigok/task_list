@@ -19,6 +19,10 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 @login_required
 def choose_date_add_tasks_show_tasks(request):
+
+		# show dates for which the user has a task
+	filtered_task_by_request_user = Task_Details_Model.objects.filter(who_execute=str(request.user)).order_by('date_of_task_execution')
+
 	if request.method == 'POST':
 
 		if request.POST.get('choose_date_button') is not None:
@@ -41,8 +45,7 @@ def choose_date_add_tasks_show_tasks(request):
 			else:
 				return render(request, 'task_list.html', {'errors': errors})
 
-
-			
+		
 			
 			# show tasks filtered by chooses date and logged user's
 			ch_task = Task_Details_Model.objects.filter(date_of_task_execution=str(new_date), who_execute=str(request.user))
@@ -63,7 +66,7 @@ def choose_date_add_tasks_show_tasks(request):
 				current_details = None
 				users_list = None
 
-			return render(request, 'task_list.html', {'users_list': users_list, 'ch_task': today_task_list, 'current_details': current_details})
+			return render(request, 'task_list.html', {'filtered_task_by_request_user': filtered_task_by_request_user, 'users_list': users_list, 'today_task_list': today_task_list, 'current_details': current_details})
 		
 
 			# add new task
@@ -113,7 +116,7 @@ def choose_date_add_tasks_show_tasks(request):
 				return HttpResponseRedirect('%s?status_message=Task added!' %(reverse('choose_date_add_tasks_show_tasks_view_url')))
 
 			else:
-				return render(request, 'task_list.html', {'errors': errors})	
+				return render(request, 'task_list.html', {'errors': errors, 'filtered_task_by_request_user': filtered_task_by_request_user})	
 
 
 		elif request.POST.get('cancel_button') is not None:
@@ -122,11 +125,11 @@ def choose_date_add_tasks_show_tasks(request):
 
 
 		else:
-			return render(request, 'task_list.html', {})
+			return render(request, 'task_list.html', {'filtered_task_by_request_user': filtered_task_by_request_user})
 
 			#return HttpResponseRedirect(u'%s?status_message=You should choose some date!' %(reverse('choose_date_url')))
 	else:
-		return render(request, 'task_list.html', {})
+		return render(request, 'task_list.html', {'filtered_task_by_request_user': filtered_task_by_request_user})
 
 
 '''

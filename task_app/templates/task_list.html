@@ -12,6 +12,19 @@
 					<div class="col-xs-12 col-md-1" id="show_tasks_button">
 						<input type="button" value="Show tasks">
 					</div> -->
+					<div class="col-xs-12 col-md-6 col-md-offset-2">
+
+						{% if filtered_task_by_request_user %}
+							<p>You have task on next dates: <br>
+								{% for entry in filtered_task_by_request_user %}
+									| <span id="date_span">{{ entry.date_of_task_execution }}</span> |
+								{% endfor %}
+							</p>
+						{% else %}
+							<p>You has not task yet!</p>
+						{% endif %}
+
+					</div>
 
 					<form action="{% url 'choose_date_add_tasks_show_tasks_view_url' %}"
 							method='post'
@@ -44,7 +57,7 @@
 						<hr>
 													
 
-							{% if ch_task %}
+							{% if today_task_list %}
 
 								<table class="table table-hover ">
 
@@ -57,7 +70,7 @@
 										<th class="text-center">Task sent</th>
 									</tr>
 
-									{% for entry in ch_task %}
+									{% for entry in today_task_list %}
 									
 									
 										<tr>
