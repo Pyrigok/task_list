@@ -79,19 +79,19 @@ tr:hover {
 
 
 /* end base content */
-footer {
+ /* footer {
   position: fixed;
+  width: 100%;
   z-index: 1000;
   bottom: 0;
   left: 0;
-  right: 0;
   box-shadow: 0px -1px 10px 3px #264d00;
   background-color: #ecf9f2;
   padding-top: 10px;
   margin-top: 10px;
   font-family: "Open Sans", sans-serif;
   color: black; 
-  margin-top: 10px}
+  margin-top: 10px} */
 
 /*# sourceMappingURL=style.css.map */
 
