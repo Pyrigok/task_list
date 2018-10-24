@@ -22,7 +22,16 @@ def choose_date_add_tasks_show_tasks(request):
 
 		# show dates for which the user has a task
 	filtered_task_by_request_user = Task_Details_Model.objects.filter(who_execute=str(request.user)).order_by('date_of_task_execution')
-	
+
+# --- в розробці, витерти...
+	print('f - ', filtered_task_by_request_user)
+	only_date_list = []
+	for entry in filtered_task_by_request_user:
+		
+		only_date_list.append(str(entry.date_of_task_execution))
+	print('l - ', set(only_date_list))
+# ---
+
 
 		# click on date and see task list on this date
 	selected_date_entry_from_cookie = get_selected_date(request)

@@ -106,7 +106,16 @@ DATABASES = {
         'NAME': 'task_db',
         'USER': 'task_db_user',
         'PASSWORD': '1592648t',
-        'HOST': 'localhost'
+        #'USER': 'pyrigok',
+        #'PASSWORD': '1592648',
+        'HOST': 'localhost',
+
+        # next - settings og test DB
+        'TEST': {
+            'NAME': 'test_task_db',
+            'CHARSET': 'utf8',
+            'COLLATION': 'utf8_general_ci',
+        }
     }
 }
 

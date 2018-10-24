@@ -16,38 +16,6 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.decorators import login_required
 
 
-'''
-class SendMail(forms.Form):
-	from_email = forms.EmailField(
-		label=u'Your Email Address')
-
-	subject = forms.CharField(
-		label = u'Letter title')
-
-	message = forms.CharField(
-		label = u'Letter content',
-		max_length = 2560,
-		widget = forms.TextInput)
-'''
-# for share task we change the task author
-			# class TaskShareView(UpdateView):
-			# 	model = Task_Details_Model
-			# 	fields = ['author']
-			# 	template_name_suffix = '_share_form'
-
-			# 	def get_success_url(self):
-			# 		return u'%s?status_message=Task shared!' %reverse('choose_date_add_tasks_show_tasks_view_url')
-
-			# 	def post(self, request, *args, **kwargs):
-			# 		if request.POST.get('cancel_button'):
-			# 			return HttpResponseRedirect(u'%s?status_message=Sharing canceled!' %(reverse('choose_date_add_tasks_show_tasks_view_url')))
-			# 		else:
-			# 			return super(TaskUpdateView, self).post(request, *args, **kwargs)
-
-			# 	def dispatch(self, *args, **kwargs):
-			# 		return super(TaskUpdateView, self).dispatch(*args, **kwargs)
-
-
 def send_email(request, pk):
 
 	# get recipient from cookie
@@ -128,40 +96,3 @@ def send_email(request, pk):
 		# return HttpResponseRedirect(
 		# 	u'%s?status_message=%s' %(reverse('choose_date_add_tasks_show_tasks_view_url'), ex_message))
 
-
-'''
-		if form.is_valid():
-			subject=form.cleaned_data['subject']
-			message = form.cleaned_data['message']
-			from_email = form.cleaned_data['from_email']
-
-			try:
-				send_mail(subject, message, from_email, recipient_list)
-
-			except Exception:
-				message = u'Some error occured! Try again later!'
-
-			else:
-				message = u'Message send succesfully!'
-
-			return HttpResponseRedirect(
-				u'%s?status_message=%s' %(reverse('choose_date_add_tasks_show_tasks_view_url'), message))
-
-	else:
-		form = SendMail()
-'''
-		#return render(request, 'send_mail.html', {'users_list': selected_user, 'subject': subject, 'message': message, 'from_email': from_email, 'recipient_list': recipient_list})
-	#return render(request, 'send_mail.html', {'users_list': selected_user, 'form': form})
-
-
-'''
-	subject = 'Thank you for registering to our site!'
-	message = 'message content'
-	email_from = settings.EMAIL_HOST_USER
-	recipient_list = ['pyrigok@i.ua', 'travel_pr@ukr.net']
-
-	send_mail(subject, message, email_from, recipient_list)
-
-	return redirect('choose_date_add_tasks_show_tasks_view_url')
-	return render (request, 'send_mail.html', {})
-'''
