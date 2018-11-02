@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="../static/css/style.css">
 
 </head>
-<body style='display: flex;
-    min-height: 100vh;
-    flex-direction: column;'>
+	<body style='display: flex;
+	    min-height: 100vh;
+	    flex-direction: column;'>
 
 	<header style=' top: 0;
   					left: 0;
@@ -48,17 +48,18 @@
 		
 	</header>
 	<div style='flex: 1 0 auto'>
-	<div class='row'>
-	    <div class='col-xs-3 col-xs-offset-1'>
-	        <a class='main_logo' href='{% url 'choose_date_add_tasks_show_tasks_view_url' %}'>
-	            <h1>Task Manager</h1>
-	        </a>
-	    </div>
-	</div>
-
-	{% block content %}
 	
-	{% endblock content %}
+		<div class='row'>
+		    <div class='col-xs-3 col-xs-offset-1'>
+		        <a class='main_logo' href='{% url 'choose_date_add_tasks_show_tasks_view_url' %}'>
+		            <h1>Task Manager</h1>
+		        </a>
+		    </div>
+		</div>
+
+		{% block content %}
+		
+		{% endblock content %}
 
 	</div>
 	<footer style= "<!-- position: fixed;

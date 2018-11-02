@@ -1,0 +1,41 @@
+[
+{
+	"fields": {
+		"title": "TASK1",
+		"who_execute": "USER1",
+		"date_of_task_execution": "2018-11-01",
+		"task_created_on": "2018-11-01",
+		"content": "CONTENT1"
+	},
+	"model": "task_app.task_details_model",
+	"pk": 1
+},
+{
+	"fields": {
+		"title": "TASK2",
+		"who_execute": "USER2",
+		"date_of_task_execution": "2018-11-01",
+		"task_created_on": "2018-11-01",
+		"content": "CONTENT2"
+	},
+	"model": "task_app.task_details_model",
+	"pk": 2
+},
+{
+	"fields": {
+		"username": "task_db_user",
+		"first_name": "Vasyl",
+		"last_name": "Pyrih",
+		"is_active": true,
+		"is_superuser": true,
+		"is_staff": true,
+		
+		"user_permissions": [],
+		"password": "1592648t",
+		"email": "pyrigok@i.ua"
+	},
+	"model": "auth.user",
+	"pk": 1
+}
+
+]

@@ -28,12 +28,11 @@
 
 					<div class="col-md-offset-1 col-md-4 col-xs-12">
 
-						<h2>Task List</h2>
-						<hr>
+						{% if today_task_list %}
+
+							<h2>Task List</h2>
+							<hr>
 													
-
-							{% if today_task_list %}
-
 								<table class="table table-hover ">
 
 									<tr>
@@ -124,7 +123,7 @@
 											{% for user in users_list %}
 												<option value="{{ user.id }}">{{ user }}</option>
 											{% endfor %}
-										</select>
+										</select> <br>
 										<a href="{% url 'send_mail_url' pk=entry.id %}">
 											<button id='share_task_button' class="btn btn-default">Share Task</button>
 										</a>

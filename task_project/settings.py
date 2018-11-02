@@ -52,12 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'crispy_forms',
-    
-
-    
+    'crispy_forms', 
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 REGISTRATION_OPEN = True
 REGISTRATION_AUTO_LOGIN = True
