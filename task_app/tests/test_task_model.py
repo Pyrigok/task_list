@@ -2,7 +2,6 @@ from django.test import TestCase
 from task_app.models import Task_Details_Model
 
 class Test_Task_Model(TestCase):
-	fixtures=['task_app_test_data.json']
 
 	def setUp(self):
 		pass

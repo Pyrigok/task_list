@@ -10,7 +10,7 @@ class TestEditTask(TestCase):
 
 	def setUp(self):
 		# remember test browser
-		self.client = Client(self)
+		self.client = Client()
 
 		# remember url to edit form
 		self.url = reverse("edit_task_url", kwargs={"pk": 1})
@@ -20,7 +20,8 @@ class TestEditTask(TestCase):
 		# login as admin to access task edit form
 		self.client.login(username="task_db_user", password="1592648t")
 
-		# get form and check few fields
+			# get form and check few fields
+
 		response = self.client.get(self.url)
 
 		# check response status
@@ -32,7 +33,7 @@ class TestEditTask(TestCase):
 		self.assertIn(b"content", response.content)
 		self.assertIn(b'Update', response.content)
 		self.assertIn(b'Cancel', response.content)
-		#self.assertIn("action='%s'" % self.url, response.content)
+		self.assertIn(b"action='%s'" % self.url, response.content)
 
 
 	# test 'POST' request
@@ -65,3 +66,4 @@ class TestEditTask(TestCase):
 		self.assertIn("Task edited!", response.content)
 		self.assertEqual(response.redirect_chain[0][0],
 			'http://testserver/?status_message=' + 'Task%20edited!')
+		print('end')
