@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-20 13:50+0000\n"
+"POT-Creation-Date: 2018-11-20 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,6 +160,22 @@ msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a href="
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
+
+#: templates/account/logout.html:6
+msgid "Logout Section"
+msgstr "Сторінка Виходу"
+
+#: templates/account/logout.html:8
+msgid "Are you sure you want to logout"
+msgstr "Ви впевнені що хочете вийти"
+
+#: templates/account/logout.html:19 templates/base.html:36
+msgid "Logout"
+msgstr "Вихід"
+
+#: templates/account/logout.html:19
+msgid "Back to tasks"
+msgstr "Назад до завдань"
 
 #: templates/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
@@ -325,10 +341,6 @@ msgstr ""
 #: templates/base.html:6 templates/base.html:56
 msgid "Task Manager"
 msgstr "Менеджер завдань"
-
-#: templates/base.html:36
-msgid "Logout"
-msgstr "Вихід"
 
 #: templates/base.html:42
 msgid "Registration"
