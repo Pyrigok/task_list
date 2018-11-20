@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 	<div class="col-xs-12 text-center">
 
-	<h1>Deleting Page</h1>
+	<h1>{% trans 'Deleting Page' %}</h1>
 
 		<form method='post'>
 			{% csrf_token %}
-			<h3>Are you sure you want delete this task?</h3>
+			<h3>{% trans 'Are you sure you want delete this task?' %}</h3>
 			{{ form.as_p }}
 
-			<button class="btn btn-danger" type="submit">Delete</button>
-			<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">Cancel</a>
+			<button class="btn btn-danger" type="submit">{% trans 'Delete' %}</button>
+			<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">{% trans 'Cancel' %}</a>
 		</form>
 	</div>
 

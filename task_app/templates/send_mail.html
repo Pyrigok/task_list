@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 	
@@ -6,7 +7,7 @@
 	<div class="row">
 		<div class="col-xs-12 text-center">
 
-			<h1>Send Mail Page</h1>
+			<h1>{% trans 'Send Mail Page' %}</h1>
 			<hr>
 		</div>
 
@@ -19,7 +20,7 @@
 						</div>
 
 						<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">
-							<button class="btn btn-default" name='cancel_sending_button'>Back</button>
+							<button class="btn btn-default" name='cancel_sending_button'>{% trans 'Back' %}</button>
 						</a>
 
 					<hr>
@@ -32,34 +33,24 @@
 
 							{% for entry in selected_user %}
 
-								<h3>Are you sure you want pass task <br><span id='task_title_span'>{{ subject }}</span> <br>to user <br><span id='recipient_name_span'>{{ entry }}</span>???</h3>
+								<h3>{% trans 'Are you sure you want pass task' %} <br><span id='task_title_span'>{{ subject }}</span> <br>{% trans 'to user' %} <br><span id='recipient_name_span'>{{ entry }}</span>???</h3>
 								
 		
 							{% endfor %}
 							
 
-							<button class="btn btn-success" type='submit' value="Send" name="send_button" />Yes</button>
+							<button class="btn btn-success" type='submit' value="Send" name="send_button" />{% trans 'Yes' %}</button>
 							
 
 						</form> 
 						<br>
 
 						<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">
-								<button class="btn btn-default" name='cancel_sending_button'>No</button>
+								<button class="btn btn-default" name='cancel_sending_button'>{% trans 'No' %}</button>
 							</a>
 							
 							<hr>
 					{% endif %}
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-xs-12 text-center">
-
-
-			
-
-	
 		</div>
 	</div>
 

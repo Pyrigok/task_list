@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 	<div class="col-xs-12 text-center">
 
-	<h1>Editing Page</h1>
+	<h1>{% trans 'Editing Page' %}</h1>
 
 		<form method='post'>
 			{% csrf_token %}
 			{{ form.as_p }}
 
-			<button class="btn btn-default" type="submit" name='Update'>Update</button>
-			<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">Cancel</a>
+			<button class="btn btn-default" type="submit" name='Update'>{% trans 'Update' %}</button>
+			<a href="{% url 'choose_date_add_tasks_show_tasks_view_url' %}">{% trans 'Cancel' %}</a>
 		</form>
 	</div>
 
