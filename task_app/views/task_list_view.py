@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext as _
 
 import datetime
 
@@ -60,17 +60,17 @@ def choose_date_add_tasks_show_tasks(request):
 			errors = {}
 
 			data['who_execute'] = request.user
-			data['status'] = 'In the process'
+			data['status'] = _('In the process')
 
 			title = request.POST.get('title', '').strip()
 			if not title:
-				errors['title'] = u'Fill this field!'
+				errors['title'] = _(u'Fill this field!')
 			else:
 				data['title'] = title
 
 			date_of_task_execution = request.POST.get('date_of_task_execution', '').strip()
 			if not date_of_task_execution:
-				errors['date_of_task_execution'] = u'Fill this field'
+				errors['date_of_task_execution'] = _(u'Fill this field!')
 			else:
 				date_of_task_exec = datetime.date(int(date_of_task_execution.split('-')[0]),
 						int(date_of_task_execution.split('-')[1]),
@@ -82,11 +82,11 @@ def choose_date_add_tasks_show_tasks(request):
 				if (str(date_of_task_exec) == str(current_date)) or int(difference) > 0:
 					data['date_of_task_execution'] = date_of_task_execution
 				else:
-					errors['date_of_task_execution'] = "Choose correct date!"
+					errors['date_of_task_execution'] = _("Choose correct date!")
 
 			content = request.POST.get('content', '').strip()
 			if not content:
-				errors['content'] = u'Fill this field!'
+				errors['content'] = _(u'Fill this field!')
 			else:
 				data['content'] = content
 
@@ -95,7 +95,7 @@ def choose_date_add_tasks_show_tasks(request):
 				new_task = Task_Details_Model(**data)
 				new_task.save()
 
-				return HttpResponseRedirect('%s?status_message=Task added!' %(reverse('choose_date_add_tasks_show_tasks_view_url')))
+				return HttpResponseRedirect('%s?status_message=%s' %(reverse('choose_date_add_tasks_show_tasks_view_url'), _(u"Task added!")))
 
 			else:
 				return render(request, 'task_list.html', {'errors': errors, 'filtered_task_by_request_user': filtered_task_by_request_user, 'today_task_list': today_task_list})	

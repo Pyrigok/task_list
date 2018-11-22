@@ -101,8 +101,8 @@
 									<article>{{ entry.content }}</article>
 									<hr>
 									<p>{{ entry.status }}</p>
-									<p>created on - {{ entry.task_created_on }} |
-									 when to execute - {{ entry.date_of_task_execution }}</p>
+									<p>{% trans 'created on' %} - {{ entry.task_created_on }} |
+									 {% trans 'when to execute'%} - {{ entry.date_of_task_execution }}</p>
 									<!-- <p>deadline - {{ entry.deadline }}</p> -->
 
 									<hr>

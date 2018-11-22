@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-20 14:29+0000\n"
+"POT-Creation-Date: 2018-11-22 11:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -438,6 +438,14 @@ msgstr "Немає завдань"
 msgid "Task Detail"
 msgstr "Деталі завдання"
 
+#: templates/task_list.html:104
+msgid "created on"
+msgstr "створено"
+
+#: templates/task_list.html:105
+msgid "when to execute"
+msgstr "виконати"
+
 #: templates/task_list.html:111
 msgid "Edit Task"
 msgstr "Редагувати Завдання"
@@ -469,3 +477,37 @@ msgstr "Додати Завдання"
 #: templates/task_list.html:200
 msgid "Close"
 msgstr "Закрити"
+
+#: views/edit_task_view.py:20
+msgid "Task edited!"
+msgstr "Завдання редаговане!"
+
+#: views/edit_task_view.py:24
+msgid "Editing canceled!"
+msgstr "Редагування скасовано"
+
+#: views/edit_task_view.py:37
+
+msgid "Task deleted!"
+msgstr "Завдання видалено!"
+
+#: views/edit_task_view.py:41
+msgid "Deleting canceled!"
+msgstr "Видалення скасовано!"
+
+#: views/task_list_view.py:63
+msgid "In the process"
+msgstr "У процесі"
+
+#: views/task_list_view.py:67 views/task_list_view.py:73
+#: views/task_list_view.py:89
+msgid "Fill this field!"
+msgstr "Заповніть це поле!"
+
+#: views/task_list_view.py:85
+msgid "Choose correct date!"
+msgstr "Виберіть коректну дату!"
+
+#: views/task_list_view.py:98
+msgid "Task added!"
+msgstr "Завдання додано!"
