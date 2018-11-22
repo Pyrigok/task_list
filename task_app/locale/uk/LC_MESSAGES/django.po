@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-22 11:36+0000\n"
+"POT-Creation-Date: 2018-11-22 12:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: models/task_details_model.py:7 models/task_details_model.py:49
+msgid "Task description"
+msgstr "Опис Завдання"
+
+#: models/task_details_model.py:8
+msgid "Tasks description"
+msgstr "Описи Завдань"
+
+#: models/task_details_model.py:13
+msgid "Who execute the task"
+msgstr "Виконавець"
+
+#: models/task_details_model.py:19
+msgid "From whom task shared"
+msgstr "Хто прислав"
+
+#: models/task_details_model.py:25
+msgid "Task title"
+msgstr "Назва завдання"
+
+#: models/task_details_model.py:33
+msgid "Date of task execution"
+msgstr "Дата виконання"
+
+#: models/task_details_model.py:44
+msgid "Status of task"
+msgstr "Статус"
+
+#: models/task_details_model.py:53
+msgid "Date of add task"
+msgstr "Дата додання"
 
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
@@ -42,7 +74,7 @@ msgstr "Наступні адреси електронної пошти пов'�
 
 #: templates/account/email.html:24
 msgid "Verified"
-msgstr ""
+msgstr "Перевірено"
 
 #: templates/account/email.html:26
 msgid "Unverified"
@@ -487,7 +519,6 @@ msgid "Editing canceled!"
 msgstr "Редагування скасовано"
 
 #: views/edit_task_view.py:37
-
 msgid "Task deleted!"
 msgstr "Завдання видалено!"
 
